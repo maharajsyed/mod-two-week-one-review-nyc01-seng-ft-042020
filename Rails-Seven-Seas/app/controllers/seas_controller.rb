@@ -6,7 +6,7 @@ class SeasController < ApplicationController
 
   def index
     @seas = Sea.all
-    render :index
+    # render :index
   end
   
   def new
@@ -19,21 +19,21 @@ class SeasController < ApplicationController
   end
   
   def edit
-    @sea = Sea.find(sea_params[:id])
+    @sea = Sea.find(params[:id])
   end
   
   def update
-    @sea = Sea.find(sea_params[:id])
+    @sea = Sea.find(params[:id])
     @sea.update(sea_params)
     redirect_to seas_path(@sea)
   end
   
   def show
-    @sea = Sea.find(sea_params[:id])
+    @sea = Sea.find(params[:id])
   end
   
   def destroy
-    @sea = Sea.find(sea_params[:id])
+    @sea = Sea.find(params[:id])
     @sea.destroy
     redirect_to seas_path
   end
@@ -45,4 +45,8 @@ class SeasController < ApplicationController
   def sea_params
     params.require(:sea).permit(:name, :temperature, :bio, :mood, :image_url, :favorite_color, :scariest_creature, :has_mermaids)
   end
+
+
+
+
 end
